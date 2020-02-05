@@ -158,12 +158,21 @@ void fim_realtime_event(char *file);
 void fim_whodata_event(whodata_evt *w_evt);
 
 /**
+ * @brief Process a path that has possibly been deleted
+ *
+ * @param pathname Name of path
+ * @param mode Monitoring FIM mode
+ * @param w_evt Pointer to whodata information
+ */
+void fim_process_missing_entry(char * pathname, fim_event_mode mode, whodata_evt * w_evt);
+
+/**
  * @brief Process FIM audit event
  *
  * @param [in] file Path of the file to check
  * @param [in] inode_key Inode key of the file to check
  * @param [in] mode 1 means realtime, 2 means whodata
- * @param [in] w_evt Whodata event
+ * @param [in] w_evt Whodata event, it may be null
  */
 void fim_audit_inode_event(char *file, const char *inode_key, fim_event_mode mode, whodata_evt *w_evt);
 
